@@ -96,31 +96,37 @@ namespace DotnetNeverLateAgain
 
             Thread.Sleep(3000);
 
-            if (nonAllDayEvents.Count > 2)
+            if (nonAllDayEvents.Count > 1)
             {
-                var index = 0;
-                while (index < allEvents.Count && allEvents[index].Start.DateTime < DateTime.Today.AddHours(13))// this depends on the list being sorted
-                    index++;
+                Console.WriteLine("Okay, more than one event in the day? I can't figure this out. Just go to the lunch when you don't have meeting!");
 
-                if (index == 0)
-                {
-                    Console.WriteLine("Go to lunch before " + nonAllDayEvents[0].Start.DateTime);
-                }
-                else if (index < allEvents.Count)
-                {
-                    if (DateTime.Parse(allEvents[index - 1].End.DateTimeRaw).Subtract(DateTime.Parse(allEvents[index].Start.DateTimeRaw)).TotalMinutes > 30)
-                        Console.WriteLine("It seems like going to lunch between " +  allEvents[index - 1].End + " and " + allEvents[index].Start + " seems reasonable");
-                }
-                else {
-                    Console.WriteLine("Just go to lunch when you don't have a meeting okay, I don't know");
-                }
+                // Convert events to an array of minute booleans that say it is open or not. Walk through the
+                // array and find at least 30 opens --> X open slots in a row
+                
+                //var index = 0;
+                //while (index < allEvents.Count && allEvents[index].Start.DateTime < DateTime.Today.AddHours(12))// this depends on the list being sorted
+                //    index++;
+
+                //if (index == 0)
+                //{
+                //    Console.WriteLine("Go to lunch before " + nonAllDayEvents[0].Start.DateTime);
+                //}
+                //else if (index < allEvents.Count)
+                //{
+                //    if (DateTime.Parse(allEvents[index - 1].End.DateTimeRaw).Subtract(DateTime.Parse(allEvents[index].Start.DateTimeRaw)).TotalMinutes > 30)
+                //        Console.WriteLine("It seems like going to lunch between " + allEvents[index - 1].End + " and " + allEvents[index].Start + " seems reasonable");
+                //}
+                //else
+                //{
+                //    Console.WriteLine("Just go to lunch when you don't have a meeting okay, I don't know");
+                //}
             }
             else if (nonAllDayEvents.Count == 1)
                 Console.WriteLine("Just don't go to lunch between " + nonAllDayEvents[0].Start.DateTime + " and " + nonAllDayEvents[0].End.DateTime + ", that's all you got today");
             else // 0 events
                 Console.WriteLine("You got an open day buddy. Go to lunch whenever!");
 
-            Thread.Sleep(300);
+            Thread.Sleep(600);
 
             Console.WriteLine();
             Console.WriteLine("Okay, you can ignore me now, I will remind you one minute before your meetings");
