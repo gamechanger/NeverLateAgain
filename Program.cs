@@ -23,6 +23,11 @@ namespace DotnetNeverLateAgain
 
         public static void Main(string[] args)
         {
+            Console.WriteLine("Please enter your gc.com email: ");
+            var email = Console.ReadLine();
+            Console.WriteLine();
+            Console.WriteLine("Okay, gathering your day");
+
             UserCredential credential;
 
             using (var stream =
@@ -43,16 +48,14 @@ namespace DotnetNeverLateAgain
                 ApplicationName = ApplicationName,
             });
 
-            var myEventsToday = service.Events.List("steven.popovich@gc.com");
+            var myEventsToday = service.Events.List(email);
             myEventsToday.TimeMin = DateTime.Today;
-            myEventsToday.ShowDeleted = false;
             myEventsToday.SingleEvents = true;
             myEventsToday.TimeMax = DateTime.Today.AddDays(1);
             myEventsToday.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
 
             var fullTeamEventsToday = service.Events.List("gamechanger.io_8ag52p72ocos9b61g7tcdt98ds@group.calendar.google.com");
             fullTeamEventsToday.TimeMin = DateTime.Today;
-            fullTeamEventsToday.ShowDeleted = false;
             fullTeamEventsToday.SingleEvents = true;
             fullTeamEventsToday.TimeMax = DateTime.Today.AddDays(1);
             fullTeamEventsToday.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
