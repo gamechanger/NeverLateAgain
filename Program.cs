@@ -98,7 +98,7 @@ namespace DotnetNeverLateAgain
 
             if (nonAllDayEvents.Count > 1)
             {
-                Console.WriteLine("Okay, more than one event in the day? I can't figure this out. Just go to the lunch when you don't have meeting!");
+                Console.WriteLine("Okay, more than one event in the day? I can't figure this out. Just go to the lunch when you don't have meetings!");
 
                 // Convert events to an array of minute booleans that say it is open or not. Walk through the
                 // array and find at least 30 opens --> X open slots in a row
@@ -129,7 +129,7 @@ namespace DotnetNeverLateAgain
             Thread.Sleep(600);
 
             Console.WriteLine();
-            Console.WriteLine("Okay, you can ignore me now, I will remind you one minute before your meetings");
+            Console.WriteLine("You can ignore me now, I will remind you one minute before your meetings");
             Console.WriteLine();
 
             CreateHostBuilder(args).Build().Run(); // this is honestly just an easy way to keep the application running
