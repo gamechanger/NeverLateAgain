@@ -26,8 +26,10 @@ namespace DotnetNeverLateAgain
             Console.WriteLine("Please enter your gc.com email: ");
             var email = Console.ReadLine();
             Console.WriteLine();
-            Console.WriteLine("Okay, gathering your day");
-
+            Console.WriteLine("Okay, gathering your day...");
+            Console.WriteLine();
+            Thread.Sleep(400);
+      
             UserCredential credential;
 
             using (var stream =
@@ -72,14 +74,59 @@ namespace DotnetNeverLateAgain
 
             allDaySummaries.AddRange(SetItUp(allEvents));
 
+            Thread.Sleep(4000);
+
             Console.WriteLine("Here are the all-day events:");
+            Thread.Sleep(400);
             foreach (var summary in allDaySummaries)
                 Console.WriteLine(summary);
 
+            var nonAllDayEvents = new List<Event>();
+
+            foreach (var currEvent in allEvents) {
+                if (currEvent.Start.DateTime != null)
+                    nonAllDayEvents.Add(currEvent);
+            }
+
+            Thread.Sleep(4000);
+
+            Console.WriteLine();
+            Console.WriteLine("Okay now I am gonna figure out when you should go to lunch.....maybe.....");
+            Console.WriteLine();
+
+            Thread.Sleep(3000);
+
+            if (nonAllDayEvents.Count > 2)
+            {
+                var index = 0;
+                while (index < allEvents.Count && allEvents[index].Start.DateTime < DateTime.Today.AddHours(13))// this depends on the list being sorted
+                    index++;
+
+                if (index == 0)
+                {
+                    Console.WriteLine("Go to lunch before " + nonAllDayEvents[0].Start.DateTime);
+                }
+                else if (index < allEvents.Count)
+                {
+                    if (DateTime.Parse(allEvents[index - 1].End.DateTimeRaw).Subtract(DateTime.Parse(allEvents[index].Start.DateTimeRaw)).TotalMinutes > 30)
+                        Console.WriteLine("It seems like going to lunch between " +  allEvents[index - 1].End + " and " + allEvents[index].Start + " seems reasonable");
+                }
+                else {
+                    Console.WriteLine("Just go to lunch when you don't have a meeting okay, I don't know");
+                }
+            }
+            else if (nonAllDayEvents.Count == 1)
+                Console.WriteLine("Just don't go to lunch between " + nonAllDayEvents[0].Start.DateTime + " and " + nonAllDayEvents[0].End.DateTime + ", that's all you got today");
+            else // 0 events
+                Console.WriteLine("You got an open day buddy. Go to lunch whenever!");
+
+            Thread.Sleep(300);
+
             Console.WriteLine();
             Console.WriteLine("Okay, you can ignore me now, I will remind you one minute before your meetings");
+            Console.WriteLine();
 
-            CreateHostBuilder(args).Build().Run();
+            CreateHostBuilder(args).Build().Run(); // this is honestly just an easy way to keep the application running
         }
 
         public static void BeepBeep(Event eventItem) {
