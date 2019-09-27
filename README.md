@@ -7,7 +7,7 @@ Get started:
 
 Install Dotnet SDK [here](https://dotnet.microsoft.com/download)
 
-Use [this](https://developers.google.com/calendar/quickstart/dotnet) to get credentials.json and put it in your local project
+Use just step one of [this](https://developers.google.com/calendar/quickstart/dotnet) to get credentials.json and put it in your local project
 
 Then just `dotnet run`
 
