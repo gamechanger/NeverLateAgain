@@ -72,9 +72,12 @@ namespace DotnetNeverLateAgain
 
             allDaySummaries.AddRange(SetItUp(allEvents));
 
-            Console.WriteLine("Here are all the all-day events:");
+            Console.WriteLine("Here are the all-day events:");
             foreach (var summary in allDaySummaries)
                 Console.WriteLine(summary);
+
+            Console.WriteLine();
+            Console.WriteLine("Okay, you can ignore me now, I will remind you one minute before your meetings");
 
             CreateHostBuilder(args).Build().Run();
         }
