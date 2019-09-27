@@ -1,0 +1,77 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/stevenpopovich/Desktop/DotnetNeverLateAgain/DotnetNeverLateAgain.csproj": {}
+  },
+  "projects": {
+    "/Users/stevenpopovich/Desktop/DotnetNeverLateAgain/DotnetNeverLateAgain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/stevenpopovich/Desktop/DotnetNeverLateAgain/DotnetNeverLateAgain.csproj",
+        "projectName": "DotnetNeverLateAgain",
+        "projectPath": "/Users/stevenpopovich/Desktop/DotnetNeverLateAgain/DotnetNeverLateAgain.csproj",
+        "packagesPath": "/Users/stevenpopovich/.nuget/packages/",
+        "outputPath": "/Users/stevenpopovich/Desktop/DotnetNeverLateAgain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/stevenpopovich/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.0": {
+          "dependencies": {
+            "Google.Apis.Calendar.v3": {
+              "target": "Package",
+              "version": "[1.41.1.1727, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.2, )"
+            },
+            "dein.ToolBox": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.5.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
